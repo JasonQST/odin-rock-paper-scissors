@@ -68,15 +68,19 @@ function playRound(playerSelection, computerSelection){
     }
 }
 
-function game(){
-    for(i=0; i<5; i++){
-        let playerSelection = prompt('Please enter "rock", "paper" or "scissors"');
-        var computerSelection = getComputerChoice();
-        console.log("Player selected " + playerSelection);
-        console.log("Computer selected " + computerSelection);
-        console.log(playRound(playerSelection, computerSelection));
-    }
-    console.log("You won " + winTimes + " times in total. Type game() to play again.");
+function game(playerSelection){
+    //let playerSelection = prompt('Please enter "rock", "paper" or "scissors"');
+    var computerSelection = getComputerChoice();
+    console.log("Player selected " + playerSelection);
+    console.log("Computer selected " + computerSelection);
+    result = playRound(playerSelection, computerSelection)
+    console.log(result);
+    
+    const resultContainer = document.querySelector('.resultContainer');
+    const resultDiv = document.createElement('div');
+    resultDiv.innerHTML = "<p>Player selected " + playerSelection + " </p><p>Computer selected "+ computerSelection +"</p><p>"+ result +"</p><p>----------------------------------</p>";
+    resultContainer.appendChild(resultDiv);
+    //console.log("You won " + winTimes + " times in total. Type game() to play again.");
     winTimes = 0;
 }
 
